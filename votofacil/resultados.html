@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados da Votação - VotoFácil</title>
+    <link rel="stylesheet" href="resultados.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Resultados Parciais</h1>
+        <canvas id="graficoVotos" width="400" height="400"></canvas>
+        <div class="button-container">
+            <button onclick="location.href='menu.html'">Voltar ao Menu</button>
+        </div>
+    </div>
+
+    <script>
+        // Inicializa o gráfico de pizza
+        const ctx = document.getElementById('graficoVotos').getContext('2d');
+        const resultadoGrafico = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: [], // Será preenchido dinamicamente
+                datasets: [{
+                    label: 'Votos por Candidato',
+                    data: [], // Será preenchido dinamicamente
+                    backgroundColor: [
+                        '#4CAF50', '#FF6384', '#36A2EB', '#FFCE56', '#81C784'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.raw || 0;
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = total ? ((value / total) * 100).toFixed(2) : 0;
+                                return `${label}: ${value} votos (${percentage}%)`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Função para buscar e atualizar os dados do gráfico
+        async function atualizarGrafico() {
+            try {
+                // Faz uma requisição para obter os dados de votos
+                const response = await fetch('getVotos.php');
+                const data = await response.json();
+
+                // Verifica se há um erro na resposta
+                if (data.error) {
+                    console.error("Erro ao buscar os dados: ", data.error);
+                    return;
+                }
+
+                // Extrai os nomes e os votos dos candidatos para usar no gráfico
+                const nomes = data.map(candidato => candidato.nome);
+                const votos = data.map(candidato => candidato.votos);
+
+                // Atualiza os dados do gráfico
+                resultadoGrafico.data.labels = nomes;
+                resultadoGrafico.data.datasets[0].data = votos;
+                resultadoGrafico.update();
+            } catch (error) {
+                console.error("Erro na atualização do gráfico: ", error);
+            }
+        }
+
+        // Chama a função para atualizar o gráfico ao carregar a página
+        document.addEventListener("DOMContentLoaded", atualizarGrafico);
+
+        // Configura a atualização do gráfico a cada 10 segundos
+        setInterval(atualizarGrafico, 10000); // Atualiza a cada 10 segundos
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+/* login.css */
+
+body {
+    background: linear-gradient(135deg, #4CAF50, #81C784); /* Gradiente de fundo */
+    display: flex; /* Utiliza flexbox para centralizar */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100vh; /* Ocupa toda a altura da tela */
+    font-family: Arial, sans-serif; /* Fonte padrão */
+    margin: 0; /* Remove margens padrão */
+}
+
+.container {
+    background: #4CAF50; /* Fundo branco para o formulário */
+    padding: 40px; /* Espaçamento interno */
+    border-radius: 15px; /* Bordas arredondadas */
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    width: 100%; /* Largura total do container */
+    max-width: 400px; /* Largura máxima do container */
+    text-align: center; /* Centraliza o texto */
+}
+
+h1 {
+    color: #4CAF50; /* Cor do título */
+    margin-bottom: 20px; /* Espaçamento abaixo do título */
+}
+
+form {
+    display: flex; /* Utiliza flexbox para alinhar os campos */
+    flex-direction: column; /* Alinha os campos em coluna */
+    align-items: center; /* Centraliza os campos horizontalmente */
+}
+
+input[type="email"],
+input[type="password"] {
+    padding: 12px; /* Padding dos campos */
+    margin-bottom: 15px; /* Espaçamento entre os campos */
+    border: 1px solid #ccc; /* Borda padrão */
+    border-radius: 5px; /* Bordas arredondadas */
+    font-size: 1em; /* Tamanho da fonte */
+    width: 100%; /* Largura total dos campos */
+    max-width: 300px; /* Largura máxima dos campos */
+    transition: border-color 0.3s; /* Efeito de transição na borda */
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #4CAF50; /* Cor da borda ao focar */
+    outline: none; /* Remove o contorno padrão */
+}
+
+button {
+    padding: 12px; /* Padding do botão */
+    background-color: #388E3C; /* Cor de fundo do botão */
+    color: white; /* Cor do texto do botão */
+    border: none; /* Sem borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    font-size: 1em; /* Tamanho da fonte do botão */
+    cursor: pointer; /* Cursor em forma de mão */
+    transition: background-color 0.3s, transform 0.3s; /* Efeito de transição */
+    width: 100%; /* Largura total do botão */
+    max-width: 300px; /* Largura máxima do botão */
+}
+
+button:hover {
+    background-color: #2E7D32; /* Cor do botão ao passar o mouse */
+    transform: scale(1.05); /* Aumento do botão ao passar o mouse */
+}
+
+p {
+    margin-top: 20px; /* Espaçamento acima do texto */
+    color: #555; /* Cor do texto */
+}
+
+p a {
+    color: #4CAF50; /* Cor do link */
+    text-decoration: none; /* Remove o sublinhado */
+    transition: color 0.3s; /* Efeito de transição na cor do link */
+}
+
+p a:hover {
+    color: #388E3C; /* Cor do link ao passar o mouse */
+}

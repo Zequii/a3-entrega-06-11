@@ -1,0 +1,58 @@
+/* Reset básico para garantir uma boa base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página com gradiente */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #4CAF50, #81C784); /* Gradiente verde */
+    color: #333;
+    line-height: 1.6;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Ajuste para organizar os elementos na vertical */
+}
+
+/* Título superior */
+.titulo-superior {
+    text-align: center;
+    font-size: 3em;
+    color: #2c3e50;
+    margin-bottom: 20px; /* Distância entre o título e o próximo elemento */
+    font-weight: bold;
+}
+
+/* Container para o botão e descrição */
+
+
+/* Botão de iniciar */
+.container button {
+    background-color: #388E3C; /* Cor verde para o botão */
+    color: white;
+    font-size: 1.2em;
+    padding: 25px 70px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px; /* Distância entre o botão e o texto */
+}
+
+.container button:hover {
+    background-color: #2E7D32;
+}
+
+/* Parágrafo de descrição */
+.titulo-inferior {
+    max-width: 800px;
+    margin-top: 20px; /* Distância superior do parágrafo */
+    font-size: 1.2em;
+    color: #0e0f0f;
+    text-align: center;
+    line-height: 1.5;
+}
